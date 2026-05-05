@@ -1,0 +1,439 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Ernest & Rosemary · October 23, 2027</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Great+Vibes&family=Cormorant+Garamond:ital,wght@0,300;0,400;0,500;1,300;1,400&family=Playfair+Display:ital,wght@0,400;0,500;1,400&display=swap" rel="stylesheet">
+<style>
+*,*::before,*::after{box-sizing:border-box;margin:0;padding:0}
+:root{
+  --ivory:#FAF7F2;--cream:#EDE8DC;--beige:#F5F0E8;
+  --purple:#6B4E8A;--purple-light:#9B7BB8;--plum:#3D2352;
+  --gold:#C9A84C;--gold-light:#E8C96B;
+  --ink:#2A2025;--ink-soft:#4A3F48;--ink-lighter:#7A6F78;--white:#FEFCF9;
+}
+html{scroll-behavior:smooth}
+body{font-family:'Cormorant Garamond',serif;background:var(--ivory);color:var(--ink);overflow-x:hidden}
+
+.music-btn{position:fixed;top:22px;right:22px;z-index:9999;width:44px;height:44px;border-radius:50%;background:rgba(255,255,255,.9);border:1px solid var(--gold);cursor:pointer;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 16px rgba(0,0,0,.12);transition:background .3s;font-size:18px}
+.music-btn:hover{background:var(--gold)}
+
+.float-rsvp{position:fixed;bottom:28px;right:22px;z-index:9998;background:var(--purple);color:#fff;font-family:'Cormorant Garamond',serif;font-size:12px;letter-spacing:.2em;text-transform:uppercase;padding:13px 22px;text-decoration:none;opacity:0;transform:translateY(20px);transition:all .4s;box-shadow:0 8px 32px rgba(59,22,82,.3)}
+.float-rsvp.vis{opacity:1;transform:translateY(0)}
+.float-rsvp:hover{background:var(--plum)}
+
+.nav-dots{position:fixed;right:14px;top:50%;transform:translateY(-50%);display:flex;flex-direction:column;gap:10px;z-index:900}
+.nd{width:6px;height:6px;border-radius:50%;background:rgba(107,78,138,.3);cursor:pointer;border:none;transition:all .3s}
+.nd.on{background:var(--gold);transform:scale(1.4)}
+@media(max-width:768px){.nav-dots{display:none}}
+
+/* HERO */
+#hero{min-height:100vh;background:var(--plum);display:flex;flex-direction:column;align-items:center;justify-content:center;position:relative;overflow:hidden;cursor:pointer}
+#hero::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at 50% 30%,rgba(155,123,184,.22) 0%,transparent 60%)}
+.particles{position:absolute;inset:0;pointer-events:none}
+.p{position:absolute;border-radius:50%;background:var(--gold-light);opacity:0;animation:fp linear infinite}
+@keyframes fp{0%{opacity:0;transform:translateY(100vh)}10%{opacity:.5}90%{opacity:.2}100%{opacity:0;transform:translateY(-10vh)}}
+.h-name{font-family:'Great Vibes',cursive;font-size:clamp(52px,10vw,110px);color:var(--white);text-align:center;opacity:0;animation:fiu 1.4s ease .4s forwards;position:relative;z-index:2;text-shadow:0 2px 40px rgba(201,168,76,.25)}
+.h-line{width:80px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:18px auto;opacity:0;animation:fi 1.4s ease .8s forwards;position:relative;z-index:2}
+.h-date{font-size:clamp(10px,1.5vw,13px);letter-spacing:.35em;color:rgba(255,255,255,.6);text-transform:uppercase;text-align:center;opacity:0;animation:fi 1.4s ease 1s forwards;position:relative;z-index:2}
+.env-wrap{margin-top:44px;position:relative;z-index:2;opacity:0;animation:fiu 1.4s ease 1.2s forwards}
+.env{width:clamp(210px,32vw,290px);filter:drop-shadow(0 20px 60px rgba(0,0,0,.4));transition:transform .4s;cursor:pointer}
+.env:hover{transform:translateY(-6px) scale(1.02)}
+.eb{width:100%;padding-bottom:68%;background:#7B559A;position:relative;border-radius:2px;overflow:hidden}
+.ef{position:absolute;top:0;left:0;right:0;height:55%;background:#6B4587;clip-path:polygon(0 0,100% 0,50% 100%);transform-origin:top;transition:transform .8s cubic-bezier(.4,0,.2,1);z-index:3}
+.env.open .ef{transform:rotateX(180deg)}
+.el{position:absolute;bottom:0;left:0;width:52%;height:60%;background:#7050A0;clip-path:polygon(0 100%,100% 50%,0 0);z-index:2}
+.er{position:absolute;bottom:0;right:0;width:52%;height:60%;background:#6045A0;clip-path:polygon(100% 100%,0 50%,100% 0);z-index:2}
+.eb2{position:absolute;bottom:0;left:0;right:0;height:55%;background:#7A5BAA;clip-path:polygon(0 100%,50% 0%,100% 100%);z-index:2}
+.seal{position:absolute;top:50%;left:50%;transform:translate(-50%,-50%);z-index:4;width:clamp(46px,8vw,66px);height:clamp(46px,8vw,66px);background:radial-gradient(circle,var(--gold-light) 0%,var(--gold) 60%,#A07020 100%);border-radius:50%;display:flex;align-items:center;justify-content:center;box-shadow:0 2px 16px rgba(0,0,0,.35);transition:transform .3s,opacity .5s}
+.seal-t{font-family:'Great Vibes',cursive;font-size:clamp(13px,3vw,19px);color:var(--plum)}
+.env.open .seal{transform:translate(-50%,-50%) scale(.7);opacity:0}
+.letter{position:absolute;bottom:5%;left:50%;transform:translateX(-50%) translateY(0);width:80%;background:var(--white);padding:16px 12px;text-align:center;z-index:1;transition:transform .8s cubic-bezier(.4,0,.2,1) .3s;box-shadow:0 -4px 24px rgba(0,0,0,.2)}
+.env.open .letter{transform:translateX(-50%) translateY(-70%)}
+.l-s{font-family:'Great Vibes',cursive;font-size:clamp(16px,3vw,22px);color:var(--ink);display:block}
+.l-sub{font-size:10px;letter-spacing:.2em;color:var(--ink-lighter);text-transform:uppercase;display:block;margin-top:3px}
+.hint{margin-top:18px;font-size:clamp(10px,1.5vw,12px);color:rgba(255,255,255,.4);letter-spacing:.15em;text-align:center;animation:pulse 2.5s ease infinite}
+@keyframes pulse{0%,100%{opacity:.4}50%{opacity:.8}}
+.scroll-ind{position:absolute;bottom:28px;left:50%;transform:translateX(-50%);display:flex;flex-direction:column;align-items:center;gap:8px;opacity:0;transition:opacity .6s;z-index:5}
+.scroll-ind.vis{opacity:1}
+.scroll-ind span{font-size:9px;letter-spacing:.3em;color:rgba(255,255,255,.35);text-transform:uppercase}
+.sline{width:1px;height:36px;background:linear-gradient(to bottom,rgba(201,168,76,.6),transparent);animation:sa 2s ease infinite}
+@keyframes sa{0%{transform:scaleY(0);transform-origin:top}50%{transform:scaleY(1);transform-origin:top}51%{transform:scaleY(1);transform-origin:bottom}100%{transform:scaleY(0);transform-origin:bottom}}
+
+/* MAIN */
+#main{opacity:0;transition:opacity 1s ease}
+#main.vis{opacity:1}
+section{padding:clamp(60px,10vw,120px) clamp(20px,6vw,80px);position:relative}
+.sl{font-size:11px;letter-spacing:.4em;text-transform:uppercase;color:var(--gold);text-align:center;display:block;margin-bottom:16px}
+.st{font-family:'Great Vibes',cursive;font-size:clamp(42px,7vw,76px);color:var(--plum);text-align:center;line-height:1.1;margin-bottom:22px}
+.sr{width:60px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 48px}
+
+/* ANNOUNCEMENT */
+#ann{background:var(--plum);text-align:center;padding:clamp(80px,14vw,160px) clamp(20px,6vw,80px);overflow:hidden}
+#ann::before{content:'';position:absolute;inset:0;background:radial-gradient(ellipse at center,rgba(155,123,184,.15) 0%,transparent 70%)}
+.ann-ey{font-size:12px;letter-spacing:.5em;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:24px;position:relative;z-index:1}
+.ann-h{font-family:'Great Vibes',cursive;font-size:clamp(48px,9vw,96px);color:var(--white);line-height:1.05;position:relative;z-index:1;text-shadow:0 4px 40px rgba(201,168,76,.2)}
+.ann-s{font-size:clamp(12px,2vw,15px);color:rgba(255,255,255,.55);letter-spacing:.25em;text-transform:uppercase;margin-top:18px;position:relative;z-index:1}
+.ann-q{font-style:italic;font-size:clamp(16px,2.5vw,21px);color:rgba(255,255,255,.72);max-width:580px;margin:44px auto 0;line-height:1.75;position:relative;z-index:1}
+.ann-q cite{display:block;font-style:normal;font-size:11px;letter-spacing:.25em;color:var(--gold);text-transform:uppercase;margin-top:14px}
+
+/* VENUE */
+#venue{background:var(--ivory);text-align:center}
+.vc{display:grid;grid-template-columns:1fr 1fr;gap:24px;max-width:860px;margin:0 auto}
+@media(max-width:620px){.vc{grid-template-columns:1fr}}
+.vcard{background:var(--white);border:1px solid rgba(201,168,76,.2);padding:40px 28px;position:relative;transition:box-shadow .4s,transform .4s}
+.vcard:hover{box-shadow:0 12px 48px rgba(59,22,82,.11);transform:translateY(-4px)}
+.vcard::before{content:'';position:absolute;top:0;left:20px;right:20px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.vt{font-size:10px;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:12px}
+.vn{font-family:'Playfair Display',serif;font-size:clamp(18px,2.5vw,23px);color:var(--plum);font-weight:500;line-height:1.3;margin-bottom:12px}
+.vd{font-size:clamp(14px,1.8vw,16px);color:var(--ink-lighter);line-height:1.6}
+.vtm{font-size:clamp(16px,2vw,20px);color:var(--purple);font-style:italic;margin-top:14px}
+.vmb{display:inline-block;margin-top:18px;font-size:11px;letter-spacing:.3em;text-transform:uppercase;color:var(--gold);text-decoration:none;border-bottom:1px solid rgba(201,168,76,.4);padding-bottom:2px;transition:color .3s,border-color .3s}
+.vmb:hover{color:var(--plum);border-color:var(--plum)}
+
+/* STORY */
+#story{background:var(--cream)}
+.si{max-width:740px;margin:0 auto;text-align:center}
+.sb{font-size:clamp(17px,2.2vw,21px);line-height:1.9;color:var(--ink-soft);font-weight:300}
+.sb p+p{margin-top:26px}
+.sh{font-family:'Great Vibes',cursive;font-size:clamp(28px,4vw,44px);color:var(--purple);margin-top:38px;display:block}
+
+/* TIMELINE */
+#tl{background:var(--plum);text-align:center}
+.tlg{display:flex;justify-content:center;align-items:flex-start;max-width:800px;margin:0 auto;position:relative}
+.tlg::before{content:'';position:absolute;top:7px;left:10%;right:10%;height:1px;background:linear-gradient(90deg,transparent,rgba(201,168,76,.4),transparent)}
+.tli{flex:1;display:flex;flex-direction:column;align-items:center;padding:0 10px}
+.tld{width:14px;height:14px;border-radius:50%;background:var(--gold);margin-bottom:18px;box-shadow:0 0 0 4px rgba(201,168,76,.2)}
+.tltime{font-family:'Playfair Display',serif;font-size:clamp(17px,2.5vw,23px);color:var(--gold);margin-bottom:8px}
+.tlev{font-size:11px;letter-spacing:.18em;color:rgba(255,255,255,.5);text-transform:uppercase;line-height:1.6}
+@media(max-width:560px){.tlg{flex-direction:column;align-items:center;gap:28px}.tlg::before{display:none}.tli{flex-direction:row;gap:18px;align-items:flex-start;width:100%;max-width:230px}}
+
+/* GALLERY */
+#gal{background:var(--ivory);text-align:center}
+.gq{font-style:italic;font-size:clamp(16px,2.2vw,20px);color:var(--ink-soft);max-width:540px;margin:0 auto 56px;line-height:1.75}
+.gg{display:grid;grid-template-columns:repeat(3,1fr);gap:16px;max-width:940px;margin:0 auto}
+@media(max-width:620px){.gg{grid-template-columns:1fr 1fr}}
+@media(max-width:380px){.gg{grid-template-columns:1fr}}
+.pol{background:#fff;padding:11px 11px 26px;box-shadow:0 4px 20px rgba(0,0,0,.1);transition:transform .4s,box-shadow .4s;cursor:pointer;position:relative}
+.pol:nth-child(odd){transform:rotate(-1.2deg)}.pol:nth-child(even){transform:rotate(1deg)}.pol:nth-child(3n){transform:rotate(-.5deg)}
+.pol:hover{transform:rotate(0) scale(1.05) !important;box-shadow:0 16px 48px rgba(0,0,0,.18);z-index:10}
+.pp{width:100%;aspect-ratio:1;background:linear-gradient(135deg,var(--cream),var(--beige));display:flex;align-items:center;justify-content:center}
+.pp span{font-family:'Great Vibes',cursive;font-size:26px;color:var(--purple-light);opacity:.45}
+.gtag{margin-top:56px;display:inline-block;font-family:'Great Vibes',cursive;font-size:clamp(28px,4vw,42px);color:var(--purple)}
+
+/* DRESS */
+#dress{background:var(--cream);text-align:center}
+.dc{max-width:780px;margin:0 auto}
+.di{font-size:clamp(16px,2vw,19px);color:var(--ink-soft);line-height:1.8;margin-bottom:44px;font-style:italic}
+.dis{display:grid;grid-template-columns:1fr 1fr;gap:20px;margin-bottom:22px}
+@media(max-width:480px){.dis{grid-template-columns:1fr}}
+.ditem{background:var(--white);border:1px solid rgba(201,168,76,.2);padding:30px 22px;transition:box-shadow .3s}
+.ditem:hover{box-shadow:0 8px 32px rgba(59,22,82,.1)}
+.ditem::before{content:'';position:absolute;top:0;left:16px;right:16px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent)}
+.dicon{font-size:26px;display:block;margin-bottom:11px}
+.dg{font-size:10px;letter-spacing:.4em;color:var(--gold);text-transform:uppercase;display:block;margin-bottom:9px}
+.dd{font-family:'Playfair Display',serif;font-size:clamp(15px,2vw,17px);color:var(--plum);line-height:1.4;margin-bottom:9px}
+.dp{font-size:clamp(22px,3vw,28px);color:var(--purple);font-style:italic}
+.dcon{background:var(--plum);color:var(--white);padding:26px 28px;font-size:clamp(14px,1.8vw,17px);line-height:1.75}
+.dcon strong{color:var(--gold);font-style:italic}
+
+/* RSVP */
+#rsvp{background:var(--plum);text-align:center}
+.rdl{font-size:clamp(12px,1.8vw,14px);color:rgba(255,255,255,.5);letter-spacing:.2em;text-transform:uppercase;margin-bottom:44px}
+.rf{max-width:500px;margin:0 auto;display:flex;flex-direction:column;gap:15px}
+.fi{width:100%;background:transparent;border:none;border-bottom:1px solid rgba(255,255,255,.25);padding:15px 0 11px;font-family:'Cormorant Garamond',serif;font-size:clamp(15px,2vw,18px);color:var(--white);outline:none;transition:border-color .3s;-webkit-appearance:none}
+.fi::placeholder{color:rgba(255,255,255,.32)}
+.fi:focus{border-bottom-color:var(--gold)}
+.fi option{background:var(--plum);color:white}
+.rb{margin-top:22px;background:var(--gold);color:var(--plum);border:none;padding:17px 44px;font-family:'Cormorant Garamond',serif;font-size:13px;letter-spacing:.3em;text-transform:uppercase;font-weight:600;cursor:pointer;transition:all .4s;align-self:center}
+.rb:hover{background:var(--gold-light);box-shadow:0 8px 32px rgba(201,168,76,.4)}
+.rsuc{display:none;font-family:'Great Vibes',cursive;font-size:clamp(26px,4vw,42px);color:var(--gold-light);margin-top:28px}
+.cw{display:flex;justify-content:center;gap:clamp(16px,4vw,44px);margin:60px auto 0}
+.cu{display:flex;flex-direction:column;align-items:center;gap:8px}
+.cn{font-family:'Playfair Display',serif;font-size:clamp(34px,6vw,58px);color:var(--white);font-weight:400;line-height:1}
+.cla{font-size:10px;letter-spacing:.3em;color:rgba(255,255,255,.38);text-transform:uppercase}
+.cs{font-family:'Playfair Display',serif;font-size:clamp(34px,6vw,58px);color:rgba(201,168,76,.25);line-height:1;align-self:flex-start}
+
+/* REGISTRY */
+#reg{background:var(--ivory);text-align:center}
+.rb2{font-size:clamp(18px,2.5vw,23px);color:var(--ink-soft);font-style:italic;line-height:1.75;max-width:540px;margin:0 auto 38px}
+.rbtn{display:inline-block;border:1px solid var(--purple);color:var(--purple);font-size:13px;letter-spacing:.3em;text-transform:uppercase;padding:15px 38px;text-decoration:none;transition:all .4s;background:none;cursor:pointer}
+.rbtn:hover{background:var(--purple);color:white}
+
+/* CULTURE */
+#cult{background:var(--plum);text-align:center}
+.cb{font-size:clamp(17px,2.2vw,21px);color:rgba(255,255,255,.72);max-width:660px;margin:0 auto 32px;line-height:1.9;font-weight:300}
+.cd{font-size:clamp(14px,1.8vw,16px);color:rgba(255,255,255,.46);max-width:540px;margin:0 auto;line-height:1.85}
+.cd strong{color:var(--gold);font-weight:400;font-style:italic}
+
+/* THANKS */
+#ty{background:var(--cream);text-align:center;padding:clamp(80px,14vw,160px) clamp(20px,6vw,80px)}
+.ty-b{font-size:clamp(17px,2.2vw,21px);color:var(--ink-soft);max-width:540px;margin:0 auto 26px;line-height:1.9;font-weight:300}
+.ty-c{font-size:clamp(14px,1.8vw,16px);color:var(--ink-lighter);margin-bottom:44px}
+.ty-c a{color:var(--purple);text-decoration:none;border-bottom:1px solid rgba(107,78,138,.3);padding-bottom:1px;transition:border-color .3s}
+.ty-c a:hover{border-color:var(--purple)}
+.ty-h{font-family:'Great Vibes',cursive;font-size:clamp(38px,7vw,76px);color:var(--plum);display:block;margin-bottom:30px}
+.fr{width:100%;max-width:380px;height:1px;background:linear-gradient(90deg,transparent,var(--gold),transparent);margin:0 auto 26px}
+.fc{font-size:11px;letter-spacing:.2em;color:var(--ink-lighter);text-transform:uppercase}
+
+/* LIGHTBOX */
+.lb{display:none;position:fixed;inset:0;background:rgba(30,10,40,.95);z-index:10000;align-items:center;justify-content:center;backdrop-filter:blur(12px)}
+.lb.on{display:flex}
+.lbc{position:absolute;top:22px;right:28px;font-size:26px;color:rgba(255,255,255,.45);cursor:pointer;transition:color .2s;background:none;border:none;line-height:1;font-family:serif}
+.lbc:hover{color:white}
+.lbi{width:min(480px,85vw);height:min(480px,85vh);background:var(--cream);display:flex;align-items:center;justify-content:center;font-family:'Great Vibes',cursive;font-size:56px;color:var(--purple-light);box-shadow:0 0 80px rgba(0,0,0,.6)}
+
+@keyframes fi{from{opacity:0}to{opacity:1}}
+@keyframes fiu{from{opacity:0;transform:translateY(28px)}to{opacity:1;transform:translateY(0)}}
+.rv{opacity:0;transform:translateY(30px);transition:opacity .8s ease,transform .8s ease}
+.rv.on{opacity:1;transform:translateY(0)}
+.d1{transition-delay:.1s}.d2{transition-delay:.2s}.d3{transition-delay:.3s}.d4{transition-delay:.4s}
+</style>
+</head>
+<body>
+
+<button class="music-btn" onclick="toggleMusic()" title="Toggle music">♫</button>
+<a href="#rsvp" class="float-rsvp" id="frsvp">RSVP Now</a>
+<nav class="nav-dots">
+  <button class="nd on" onclick="gto('hero')"></button>
+  <button class="nd" onclick="gto('ann')"></button>
+  <button class="nd" onclick="gto('venue')"></button>
+  <button class="nd" onclick="gto('story')"></button>
+  <button class="nd" onclick="gto('tl')"></button>
+  <button class="nd" onclick="gto('gal')"></button>
+  <button class="nd" onclick="gto('dress')"></button>
+  <button class="nd" onclick="gto('rsvp')"></button>
+  <button class="nd" onclick="gto('reg')"></button>
+  <button class="nd" onclick="gto('cult')"></button>
+  <button class="nd" onclick="gto('ty')"></button>
+</nav>
+<audio id="bgm" loop><source src="" type="audio/mpeg"></audio>
+
+<div class="lb" id="lb">
+  <button class="lbc" onclick="clb()">&#x2715;</button>
+  <div class="lbi">E &amp; R</div>
+</div>
+
+<section id="hero" onclick="openEnv()">
+  <div class="particles" id="pts"></div>
+  <div class="h-name">Ernest &amp; Rosemary</div>
+  <div class="h-line"></div>
+  <div class="h-date">October 23, 2027 &nbsp;&middot;&nbsp; Tampa, Florida</div>
+  <div class="env-wrap">
+    <div class="env" id="env">
+      <div class="eb">
+        <div class="ef"></div>
+        <div class="el"></div>
+        <div class="er"></div>
+        <div class="eb2"></div>
+        <div class="seal"><span class="seal-t">E&amp;R</span></div>
+        <div class="letter">
+          <span class="l-s">You&#8217;re invited</span>
+          <span class="l-sub">to the wedding</span>
+        </div>
+      </div>
+    </div>
+    <p class="hint">Tap the envelope to open</p>
+  </div>
+  <div class="scroll-ind" id="si"><span>Scroll</span><div class="sline"></div></div>
+</section>
+
+<div id="main">
+
+<section id="ann">
+  <span class="ann-ey rv">We&#8217;re Getting Married</span>
+  <div class="ann-h rv d1">We Can&#8217;t Wait<br>to Celebrate<br>With You</div>
+  <div class="ann-s rv d2">October 23, 2027 &middot; Tampa, Florida</div>
+  <blockquote class="ann-q rv d3">
+    &#8220;Therefore, what God has joined together, let no one separate.&#8221;
+    <cite>&#8212; Mark 10:9</cite>
+  </blockquote>
+</section>
+
+<section id="venue">
+  <span class="sl rv">Where We&#8217;ll Celebrate</span>
+  <h2 class="st rv">Venue</h2>
+  <div class="sr rv"></div>
+  <div class="vc">
+    <div class="vcard rv d1">
+      <span class="vt">Ceremony</span>
+      <div class="vn">St. Mark Evangelist<br>Catholic Church</div>
+      <div class="vd">October 23, 2027<br>Tampa, Florida</div>
+      <div class="vtm">1:00 PM</div>
+      <a href="https://maps.google.com/?q=St+Mark+Evangelist+Catholic+Church+Tampa+FL" target="_blank" rel="noopener" class="vmb">View on Map &rarr;</a>
+    </div>
+    <div class="vcard rv d2">
+      <span class="vt">Reception</span>
+      <div class="vn">The Venetian<br>Event Center</div>
+      <div class="vd">October 23, 2027<br>Tampa, Florida</div>
+      <div class="vtm">6:00 PM</div>
+      <a href="https://maps.google.com/?q=The+Venetian+Event+Center+Tampa+FL" target="_blank" rel="noopener" class="vmb">View on Map &rarr;</a>
+    </div>
+  </div>
+</section>
+
+<section id="story">
+  <span class="sl rv">How It All Began</span>
+  <h2 class="st rv">Our Story</h2>
+  <div class="sr rv"></div>
+  <div class="si">
+    <div class="sb rv d1">
+      <p>Ernest and I met in 2020 through mutual friends, and what started simply quickly turned into something real. By 2021, we had made it official, and from that moment on, everything just felt right.</p>
+      <p>We&#8217;ve grown through so much together &#8212; learning, evolving, and choosing each other every step of the way, while keeping God at the center of it all. Our journey hasn&#8217;t been perfect, but it&#8217;s been real, and through it all, we&#8217;ve built something strong, honest, and full of love.</p>
+      <p>In November 2025, Ernest planned the most beautiful proposal. Being surrounded by the people I love made it even more special. In that moment, I realized everything we had been building led to this&#8230; And of course, I said yes.</p>
+      <p>Our story is full of love, growth, laughter, and real moments. And this is just the beginning for us.</p>
+    </div>
+    <span class="sh rv d2">#RNE2027</span>
+  </div>
+</section>
+
+<section id="tl">
+  <span class="sl rv" style="color:rgba(201,168,76,.7)">The Day Unfolds</span>
+  <h2 class="st rv" style="color:var(--white)">Wedding Day Timeline</h2>
+  <div class="sr rv"></div>
+  <div class="tlg">
+    <div class="tli rv d1"><div class="tld"></div><div class="tltime">1:00 PM</div><div class="tlev">Ceremony<br>Begins</div></div>
+    <div class="tli rv d2"><div class="tld"></div><div class="tltime">5:30 PM</div><div class="tlev">Cocktail<br>Hour</div></div>
+    <div class="tli rv d3"><div class="tld"></div><div class="tltime">6:00 PM</div><div class="tlev">Reception<br>Begins</div></div>
+    <div class="tli rv d4"><div class="tld"></div><div class="tltime">8:30 PM</div><div class="tlev">Dancing &amp;<br>Celebration</div></div>
+  </div>
+</section>
+
+<section id="gal">
+  <span class="sl rv">A Glimpse Into Our Journey</span>
+  <h2 class="st rv">Gallery</h2>
+  <div class="sr rv"></div>
+  <p class="gq rv">&#8220;From long-distance calls to building a life together, our journey has been full of love, growth, and laughter.&#8221;</p>
+  <div class="gg">
+    <div class="pol rv d1" onclick="olb()"><div class="pp"><span>E &amp; R</span></div></div>
+    <div class="pol rv d2" onclick="olb()"><div class="pp"><span>&#9825;</span></div></div>
+    <div class="pol rv d3" onclick="olb()"><div class="pp"><span>E &amp; R</span></div></div>
+    <div class="pol rv d1" onclick="olb()"><div class="pp"><span>&#9825;</span></div></div>
+    <div class="pol rv d2" onclick="olb()"><div class="pp"><span>E &amp; R</span></div></div>
+    <div class="pol rv d3" onclick="olb()"><div class="pp"><span>&#9825;</span></div></div>
+  </div>
+  <span class="gtag rv">#RNE2027</span>
+</section>
+
+<section id="dress">
+  <span class="sl rv">Come Dressed to Celebrate</span>
+  <h2 class="st rv">Dress Code</h2>
+  <div class="sr rv"></div>
+  <div class="dc">
+    <p class="di rv">Guests are warmly invited to dress elegantly in attire of their choice, paired with our designated wedding accessories.</p>
+    <div class="dis">
+      <div class="ditem rv d1" style="position:relative">
+        <span class="dicon">&#128120;</span>
+        <span class="dg">Ladies</span>
+        <div class="dd">Olive Green Gele / Head-Tie</div>
+        <div class="dp">$70</div>
+      </div>
+      <div class="ditem rv d2" style="position:relative">
+        <span class="dicon">&#129333;</span>
+        <span class="dg">Gentlemen</span>
+        <div class="dd">Olive Green Fila / Cap</div>
+        <div class="dp">$50</div>
+        <p style="font-size:12px;color:var(--ink-lighter);font-style:italic;margin-top:8px">Head measurements required when ordering</p>
+      </div>
+    </div>
+    <div class="dcon rv d3">For payment and orders, please contact Rosemary<br><strong>+1 (813) 900-8751</strong></div>
+  </div>
+</section>
+
+<section id="rsvp">
+  <span class="sl rv" style="color:rgba(201,168,76,.7)">Join Us</span>
+  <h2 class="st rv" style="color:var(--white)">RSVP</h2>
+  <div class="sr rv"></div>
+  <p class="rdl rv">Kindly respond by May 15, 2027</p>
+  <form class="rf rv d1" id="rform" onsubmit="subRsvp(event)">
+    <input type="text" class="fi" placeholder="Full Name" required>
+    <input type="email" class="fi" placeholder="Email Address" required>
+    <input type="number" class="fi" placeholder="Number of Guests" min="1" max="10" required>
+    <select class="fi" required>
+      <option value="" disabled selected>Will you attend?</option>
+      <option value="yes">Joyfully accepts</option>
+      <option value="no">Regretfully declines</option>
+    </select>
+    <button type="submit" class="rb">Confirm Attendance</button>
+  </form>
+  <div class="rsuc" id="rsuc">We can&#8217;t wait to see you! &#10024;</div>
+  <div class="cw rv">
+    <div class="cu"><div class="cn" id="cd">&#8212;</div><div class="cla">Days</div></div>
+    <div class="cs">:</div>
+    <div class="cu"><div class="cn" id="ch">&#8212;</div><div class="cla">Hours</div></div>
+    <div class="cs">:</div>
+    <div class="cu"><div class="cn" id="cm">&#8212;</div><div class="cla">Minutes</div></div>
+    <div class="cs">:</div>
+    <div class="cu"><div class="cn" id="cs2">&#8212;</div><div class="cla">Seconds</div></div>
+  </div>
+</section>
+
+<section id="reg">
+  <span class="sl rv">A Note on Gifts</span>
+  <h2 class="st rv">Registry</h2>
+  <div class="sr rv"></div>
+  <p class="rb2 rv">&#8220;Your presence is truly the greatest gift to us. For those who would like to give, you&#8217;re welcome to bring your gift on the day of the celebration.&#8221;</p>
+  <a href="#" class="rbtn rv d1" onclick="return false">View Registry</a>
+</section>
+
+<section id="cult">
+  <span class="sl rv" style="color:rgba(201,168,76,.7)">Our Heritage</span>
+  <h2 class="st rv" style="color:var(--white)">Our Culture</h2>
+  <div class="sr rv"></div>
+  <p class="cb rv">Our love story is not just about us &#8212; it&#8217;s also about where we come from. We&#8217;re proud to celebrate our Nigerian heritage through our traditions, our music, and the joy of bringing our families together.</p>
+  <p class="cb rv d1">From the aso ebi to the dancing and everything in between, this day will be a beautiful reflection of our culture, our love, and who we are.</p>
+  <div class="cd rv d2">
+    <strong>Both our church wedding and traditional ceremonies</strong> will take place on the same beautiful day.<br><br>
+    Group photos to follow immediately after the ceremony.<br><br>
+    <strong>No children in attendance, please.</strong>
+  </div>
+</section>
+
+<section id="ty">
+  <span class="sl rv">From Our Hearts</span>
+  <h2 class="st rv">Thank You</h2>
+  <div class="sr rv"></div>
+  <p class="ty-b rv">We feel incredibly grateful to celebrate this special day with our family and friends. Your love and presence mean the world to us.</p>
+  <p class="ty-c rv d1">For any questions, reach us at <a href="mailto:Itohan185@gmail.com">Itohan185@gmail.com</a></p>
+  <span class="ty-h rv d2">#RNE2027</span>
+  <div class="fr rv d3"></div>
+  <p class="fc rv d3">Ernest &amp; Rosemary &middot; October 23, 2027 &middot; Tampa, Florida</p>
+</section>
+
+</div>
+
+<script>
+// Particles
+(function(){var c=document.getElementById('pts');for(var i=0;i<30;i++){var p=document.createElement('div');p.className='p';p.style.left=Math.random()*100+'%';p.style.animationDuration=(6+Math.random()*10)+'s';p.style.animationDelay=(Math.random()*8)+'s';var s=(1+Math.random()*3)+'px';p.style.width=s;p.style.height=s;c.appendChild(p);}})();
+// Envelope
+var oo=false;
+function openEnv(){if(oo)return;oo=true;document.getElementById('env').classList.add('open');setTimeout(function(){document.getElementById('si').classList.add('vis');},1200);setTimeout(function(){document.getElementById('main').classList.add('vis');},1800);}
+// Nav
+function gto(id){document.getElementById(id).scrollIntoView({behavior:'smooth'});}
+// Reveal
+var ids=['hero','ann','venue','story','tl','gal','dress','rsvp','reg','cult','ty'];
+var ro=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting)x.target.classList.add('on');});},{threshold:.12});
+document.querySelectorAll('.rv').forEach(function(el){ro.observe(el);});
+var nds=document.querySelectorAll('.nd');
+var no=new IntersectionObserver(function(e){e.forEach(function(x){if(x.isIntersecting){var i=ids.indexOf(x.target.id);if(i>=0){nds.forEach(function(d){d.classList.remove('on');});if(nds[i])nds[i].classList.add('on');}}}); },{threshold:.4});
+ids.forEach(function(id){var el=document.getElementById(id);if(el)no.observe(el);});
+// Float RSVP
+window.addEventListener('scroll',function(){if(window.scrollY>window.innerHeight*.8&&oo)document.getElementById('frsvp').classList.add('vis');});
+// Countdown
+function tick(){var t=new Date('October 23, 2027 13:00:00').getTime()-Date.now();if(t<=0){document.querySelector('.cw').innerHTML='<div style="color:var(--gold-light);font-family:\'Great Vibes\',cursive;font-size:36px">Today is the Day!</div>';return;}var f=function(n){return String(n).padStart(2,'0');};document.getElementById('cd').textContent=Math.floor(t/86400000);document.getElementById('ch').textContent=f(Math.floor(t%86400000/3600000));document.getElementById('cm').textContent=f(Math.floor(t%3600000/60000));document.getElementById('cs2').textContent=f(Math.floor(t%60000/1000));}
+tick();setInterval(tick,1000);
+// Music
+var mon=false;function toggleMusic(){var a=document.getElementById('bgm');if(!a.src||a.src===location.href){alert('Add an audio URL to the <audio> element to enable background music.');return;}if(mon){a.pause();mon=false;}else{a.play().catch(function(){});mon=true;}}
+// RSVP
+function subRsvp(e){e.preventDefault();document.getElementById('rform').style.display='none';document.getElementById('rsuc').style.display='block';}
+// Lightbox
+function olb(){document.getElementById('lb').classList.add('on');document.body.style.overflow='hidden';}
+function clb(){document.getElementById('lb').classList.remove('on');document.body.style.overflow='';}
+document.getElementById('lb').addEventListener('click',function(e){if(e.target===this)clb();});
+document.addEventListener('keydown',function(e){if(e.key==='Escape')clb();});
+</script>
+</body>
+</html>
